@@ -30,13 +30,12 @@ You're up and running!
 ### Owner Commands
 | Command      | Description                        | Command Type    | Checklist |
 | ------------ | ---------------------------------- | --------------- | --------- |
-| eval         | Run Python code in bot environment | Mention Command |           |
+| eval         | Run Python code in bot environment | Modals          |           |
 | (re/un) load | Reload/Unload/Load Plugins         | Slash Command   |           |
 
 ### General System Commands
 | Command                | Description             | Command Type  | Checklist |
 | ---------------------- | ----------------------- | ------------- | --------- |
-| help                   | Help Command            | Slash Command |           |
 | info                   | Some info about the bot | Slash Command |           |
 | ping                   | Ping of the Bot         | Slash Command |           |
 | userinfo               | Info of a user          | User Command  |           |
@@ -72,7 +71,6 @@ You're up and running!
 | Leveling System | Self Explanatory                 | Slash Command   |           |
 | remainder       | Remind you of things             | Slash Command   |           |
 | starboard       | Star messages (Togglable)        | Slash Command   |           |
-| Dashboard       | Dashboard Website for the bot    |                 |           |
 
 ### Moderation Commands
 | Command  | Description                                  | Permissions     | Command Type  | Checklist |
