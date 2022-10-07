@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+    env_file: .env
+
+  mantra:
+    build: .
+    env_file: .env
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+    volumes:
+      - ./:/code
+    command: python -m mantra
+volumes:
+  postgres_db:
