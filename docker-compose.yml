@@ -17,6 +17,5 @@ services:
       - postgres:postgres
     volumes:
       - ./:/code
-    command: python -m mantra
 volumes:
   postgres_db:
