@@ -1,9 +1,9 @@
 # Mantra Bot
 
-
 This is the planlist of all the tasks to be completed in the v1 of the Mantra bot!
 
 ## Libraries that can be used
+
 - [x] hikari-py
 - [ ] disnake
 - [ ] py-cord
@@ -13,8 +13,8 @@ This is the planlist of all the tasks to be completed in the v1 of the Mantra bo
 
 First of all check `.env.example` for Examples on environment variables.
 
-
 Clone the repository using
+
 ```bash
 git clone https://github.com/Mantra-Development/Mantra-Bot
 cd Mantra-Bot
@@ -23,17 +23,29 @@ poetry install
 python -m mantra
 ```
 
+## With Docker
+
+```bash
+git clone https://github.com/Mantra-Development/Mantra-Bot
+cd Mantra-Bot
+chmod +x run.sh
+./run.sh build
+./run.sh run
+```
+
 You're up and running!
 
 # Commands that can be implemented
 
 ### Owner Commands
-| Command      | Description                        | Command Type    | Checklist |
-| ------------ | ---------------------------------- | --------------- | --------- |
-| eval         | Run Python code in bot environment | Modals          |           |
-| (re/un) load | Reload/Unload/Load Plugins         | Slash Command   |           |
+
+| Command      | Description                        | Command Type  | Checklist |
+| ------------ | ---------------------------------- | ------------- | --------- |
+| eval         | Run Python code in bot environment | Modals        |           |
+| (re/un) load | Reload/Unload/Load Plugins         | Slash Command |           |
 
 ### General System Commands
+
 | Command                | Description             | Command Type  | Checklist |
 | ---------------------- | ----------------------- | ------------- | --------- |
 | info                   | Some info about the bot | Slash Command |           |
@@ -45,9 +57,8 @@ You're up and running!
 | Android Clyde Commands | Self Explanatory        | Slash Command |           |
 | tag                    | Tags Command            | Slash Command |           |
 
-
-
 ### Fun Commands
+
 | Command    | Description                  | Command Type  | Checklist |
 | ---------- | ---------------------------- | ------------- | --------- |
 | 8ball      | Magic 8Ball                  | Slash Command |           |
@@ -61,8 +72,8 @@ You're up and running!
 | bird       | Bird image and fact          | Slash Command |           |
 | memes      | Get memes                    | Slash Command |           |
 
-
 ### Utilities Commands
+
 | Command         | Description                      | Command Type    | Checklist |
 | --------------- | -------------------------------- | --------------- | --------- |
 | embed           | Embed Builder using buttons      | Slash Command   |           |
@@ -73,6 +84,7 @@ You're up and running!
 | starboard       | Star messages (Togglable)        | Slash Command   |           |
 
 ### Moderation Commands
+
 | Command  | Description                                  | Permissions     | Command Type  | Checklist |
 | -------- | -------------------------------------------- | --------------- | ------------- | --------- |
 | timeout  | (Un)-Timeout a member                        | Manage Messages | Slash Command |           |
