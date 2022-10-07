@@ -5,7 +5,7 @@ class PostgresConfig(BaseSettings):
     user: str
     db: str
     password: str
-    port: str
+    port: int
     host: str
 
     class Config:

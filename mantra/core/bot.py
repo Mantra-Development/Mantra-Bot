@@ -43,9 +43,10 @@ class Mantra(lightbulb.BotApp):
 
     async def on_stopping(self, event: hikari.StoppingEvent) -> None:
         await self.aiohttp_session.close()
+        await Tortoise.close_connections()
 
     async def on_stopped(self, event: hikari.StoppedEvent) -> None:
         ...
 
-    async def establish_db_connection(self):
+    async def establish_db_connection(self) -> None:
         await Tortoise.init(tortoise_config)
