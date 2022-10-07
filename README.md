@@ -28,9 +28,8 @@ python -m mantra
 ```bash
 git clone https://github.com/Mantra-Development/Mantra-Bot
 cd Mantra-Bot
-chmod +x run.sh
-./run.sh build
-./run.sh run
+docker-compose build
+docker-compose up
 ```
 
 You're up and running!

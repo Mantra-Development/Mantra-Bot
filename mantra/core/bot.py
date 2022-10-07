@@ -40,4 +40,5 @@ class Mantra(lightbulb.BotApp):
         await self.aiohttp_session.close()
 
     async def on_stopped(self, event: hikari.StoppedEvent) -> None:
+        print("hello world")
         ...
