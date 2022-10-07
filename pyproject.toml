@@ -2,7 +2,7 @@
 name = "mantra bot"
 version = "0.1.0a"
 description = "A Powerful and Easy to use Discord bot 🤖"
-authors = ["Nishant Sapkota <snishant306@gmail.com>"]
+authors = ["Nishant Sapkota <snishant306@gmail.com>", "Stuti Upreti <stutiupreti12@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 
@@ -15,7 +15,16 @@ hikari-lightbulb = "^2.2.4"
 
 [tool.poetry.group.dev.dependencies]
 black = {version = "^22.8.0", allow-prereleases = true}
+pre-commit = "^2.20.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 88

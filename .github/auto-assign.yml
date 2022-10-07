@@ -1,0 +1,12 @@
+addReviewers: true
+
+addAssignees: author
+
+reviewers:
+  - thenishantsapkota
+  - thestuti
+
+numberOfReviewers: 1
+
+skipKeywords:
+  - wip

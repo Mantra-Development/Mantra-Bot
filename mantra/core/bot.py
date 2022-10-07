@@ -3,7 +3,7 @@ import logging
 import aiohttp
 import hikari
 import lightbulb
-from mantra import CACHE_SETTINGS
+
 from mantra.config import bot_config
 
 logger = logging.getLogger(__name__)
