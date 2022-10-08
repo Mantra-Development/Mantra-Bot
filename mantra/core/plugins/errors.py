@@ -8,13 +8,16 @@ errors = lightbulb.Plugin("Errors", "Error handling plugin for the bot")
 
 
 @errors.listener(lightbulb.CommandErrorEvent)
-async def on_error(event: lightbulb.CommandErrorEvent):
+async def on_error(event: lightbulb.CommandErrorEvent) -> None:
     error = event.exception
 
     if isinstance(error, lightbulb.CommandNotFound):
         return
 
-    if isinstance(error, lightbulb.BotMissingRequiredPermission):
+    if isinstance(
+        error,
+        lightbulb.BotMissingRequiredPermission | lightbulb.MissingRequiredPermission,
+    ):
         missing = [
             perm.replace("_", " ").replace("guild", "server").title()
             for perm in str(error.missing_perms).split("|")
@@ -23,8 +26,14 @@ async def on_error(event: lightbulb.CommandErrorEvent):
             fmt = "{}, and {}".format("**, **".join(missing[:-1], missing[-1]))
         else:
             fmt = " and ".join(missing)
-
-        description = f"I am missing the **{fmt}** permission(s) to run this command."
+        symbol = (
+            "I am"
+            if isinstance(error, lightbulb.BotMissingRequiredPermission)
+            else "You are"
+        )
+        description = (
+            f"{symbol} missing the **{fmt}** permission(s) to run this command."
+        )
 
         return await event.context.respond(
             flags=hikari.MessageFlag.EPHEMERAL,
@@ -48,29 +57,6 @@ async def on_error(event: lightbulb.CommandErrorEvent):
     if isinstance(error, lightbulb.NotEnoughArguments):
         return await event.bot.help_command.send_command_help(
             event.context, event.context.command
-        )
-
-    if isinstance(error, lightbulb.MissingRequiredPermission):
-        missing = [
-            perm.replace("_", " ").replace("guild", "server").title()
-            for perm in str(error.missing_perms).split("|")
-        ]
-        if len(missing) > 2:
-            fmt = "{}, and {}".format("**, **".join(missing[:-1], missing[-1]))
-        else:
-            fmt = " and ".join(missing)
-
-        description = (
-            f"You are missing the **{fmt}** permission(s) to run this command."
-        )
-
-        return await event.context.respond(
-            flags=hikari.MessageFlag.EPHEMERAL,
-            embed=hikari.Embed(
-                title="Missing Required Permissions",
-                color=0x00FF00,
-                description=description,
-            ),
         )
 
     title = " ".join(re.compile(r"[A-Z][a-z]*").findall(error.__class__.__name__))
