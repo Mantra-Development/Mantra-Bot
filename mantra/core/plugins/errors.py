@@ -39,7 +39,7 @@ async def on_error(event: lightbulb.CommandErrorEvent) -> None:
             flags=hikari.MessageFlag.EPHEMERAL,
             embed=hikari.Embed(
                 title="Missing Required Permissions",
-                color=0x00FF00,
+                color=0xFF0000,
                 description=description,
             ),
         )
@@ -48,7 +48,7 @@ async def on_error(event: lightbulb.CommandErrorEvent) -> None:
         return await event.context.respond(
             embed=hikari.Embed(
                 title="Command on Cooldown",
-                color=0x00FF00,
+                color=0xFF0000,
                 description=f"This command is on cooldown, try again after `{math.ceil(error.retry_after)}s`.",
             ),
             flags=hikari.MessageFlag.EPHEMERAL,
