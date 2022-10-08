@@ -72,7 +72,7 @@ async def on_error(event: lightbulb.CommandErrorEvent):
                 description=description,
             ),
         )
-    
+
     title = " ".join(re.compile(r"[A-Z][a-z]*").findall(error.__class__.__name__))
     await event.context.respond(
         embed=hikari.Embed(title=title, description=str(error), color=0xFF0000),
