@@ -11,7 +11,7 @@ from mantra.core.plugins.Internal import handle_plugins
 from mantra.core.utils.errors import CommandError
 from mantra.core.utils.eval_helpers import _yields_results, eval_python_code
 
-owner = lightbulb.Plugin("Admin", "Administrator Commands Plugin")
+owner = lightbulb.Plugin("Owner", "Owner Commands Plugin")
 
 logger = logging.getLogger(__name__)
 
