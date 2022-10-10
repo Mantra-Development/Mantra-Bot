@@ -22,6 +22,7 @@ class Mantra(lightbulb.BotApp):
             help_slash_command=True,
             # cache_settings=CACHE_SETTINGS,
             ignore_bots=True,
+            prefix=lightbulb.when_mentioned_or("~"),
         )
 
     def run_bot(self) -> None:

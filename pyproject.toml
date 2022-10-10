@@ -7,12 +7,14 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.11"
+python = ">=3.9,<3.11"
 pydantic = {extras = ["dotenv"], version = "^1.10.2"}
 hikari = "^2.0.0.dev111"
 hikari-lightbulb = "^2.2.4"
 tortoise-orm = {extras = ["asyncpg"], version = "^0.19.2"}
 aerich = "^0.7.1"
+hikari-yuyo = "^1.1.1a1"
+hikari-miru = "^1.1.2"
 
 
 [tool.poetry.group.dev.dependencies]
