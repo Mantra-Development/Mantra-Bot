@@ -8,6 +8,7 @@ from tortoise import Tortoise
 
 from mantra.config import bot_config
 
+from .models import Guild
 from .tortoise_config import tortoise_config
 
 logger = logging.getLogger(__name__)
@@ -22,8 +23,15 @@ class Mantra(lightbulb.BotApp):
             help_slash_command=True,
             # cache_settings=CACHE_SETTINGS,
             ignore_bots=True,
-            prefix=lightbulb.when_mentioned_or("~"),
+            prefix=lightbulb.when_mentioned_or(self.determine_prefix),
         )
+
+    async def determine_prefix(self, _, message: hikari.Message) -> str:
+        if not message.guild_id:
+            return bot_config.prefix
+
+        data, _ = await Guild.get_or_create(id=message.guild_id)
+        return str(data.prefix)
 
     def run_bot(self) -> None:
         self.event_manager.subscribe(hikari.StartingEvent, self.on_starting)
