@@ -24,6 +24,7 @@ class Mantra(lightbulb.BotApp):
             # cache_settings=CACHE_SETTINGS,
             ignore_bots=True,
             prefix=lightbulb.when_mentioned_or(self.determine_prefix),
+            banner="mantra.assets",
         )
 
     async def determine_prefix(self, _, message: hikari.Message) -> str:
