@@ -4,7 +4,7 @@ import hikari
 import lightbulb
 
 from mantra.api.animals import make_request
-from mantra.core.utils.buttons import create_source_button
+from mantra.core.utils import Colors, create_source_button
 
 animals = lightbulb.Plugin("Animals", "Animal Command Plugin")
 
@@ -31,7 +31,7 @@ async def dog_command(ctx: lightbulb.Context, type: str) -> None:
         embed=hikari.Embed(
             title=f"Here's a random {type} for you!",
             description=f"```{animal.fact}```",
-            color=0x00FF00,
+            color=Colors.SUCCESS,
             timestamp=datetime.now().astimezone(),
         )
         .set_thumbnail(ctx.app.application.icon_url)
