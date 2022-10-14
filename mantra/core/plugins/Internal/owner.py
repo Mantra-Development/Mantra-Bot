@@ -8,7 +8,8 @@ import yuyo
 from miru.ext import nav
 
 from mantra.core.plugins.Internal import handle_plugins
-from mantra.core.utils.errors import CommandError
+from mantra.core.utils import Colors, CommandError
+from mantra.core.utils.emojis import Emojis
 from mantra.core.utils.eval_helpers import _yields_results, eval_python_code
 
 owner = lightbulb.Plugin("Owner", "Owner Commands Plugin")
@@ -25,7 +26,7 @@ async def shutdown_command(ctx: lightbulb.Context) -> None:
     await ctx.respond(
         embed=hikari.Embed(
             description="Going back to sleep, See ya around!",
-            color=0xFFA500,
+            color=Colors.ALERT,
         ),
         flags=hikari.MessageFlag.EPHEMERAL,
     )
@@ -55,7 +56,10 @@ async def extension_command(ctx: lightbulb.Context, action: str, plugin: str) ->
     if action == "reload" and plugin == "all":
         ctx.bot.reload_extensions(*ctx.bot.extensions)
         return await ctx.respond(
-            embed=hikari.Embed(description="Reloaded all extensions!", color=0x00FF00),
+            embed=hikari.Embed(
+                description=f"{Emojis.SUCCESS} Reloaded all extensions!",
+                color=Colors.SUCCESS,
+            ),
             flags=hikari.MessageFlag.EPHEMERAL,
         )
 
@@ -73,7 +77,7 @@ async def eval_command(ctx: lightbulb.Context) -> None:
     if not code:
         raise CommandError("Expected a python code block.")
     stdout, stderr, exec_time, failed = await eval_python_code(ctx, code[0])
-    color = 0xFF0000 if failed else 0x00FF00
+    color = Colors.ERROR if failed else Colors.SUCCESS
     string_paginator = yuyo.sync_paginate_string(
         _yields_results(stdout, stderr), wrapper="```python\n{}\n```", char_limit=2034
     )

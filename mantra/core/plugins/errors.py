@@ -4,6 +4,8 @@ import re
 import hikari
 import lightbulb
 
+from mantra.core.utils import Colors, Emojis
+
 errors = lightbulb.Plugin("Errors", "Error handling plugin for the bot")
 
 
@@ -27,7 +29,7 @@ async def on_error(event: lightbulb.CommandErrorEvent) -> None:
         else:
             fmt = " and ".join(missing)
         symbol = (
-            "I am"
+            f"{Emojis.ERROR} I am"
             if isinstance(error, lightbulb.BotMissingRequiredPermission)
             else "You are"
         )
@@ -39,7 +41,7 @@ async def on_error(event: lightbulb.CommandErrorEvent) -> None:
             flags=hikari.MessageFlag.EPHEMERAL,
             embed=hikari.Embed(
                 title="Missing Required Permissions",
-                color=0xFF0000,
+                color=Colors.ERROR,
                 description=description,
             ),
         )
@@ -48,8 +50,8 @@ async def on_error(event: lightbulb.CommandErrorEvent) -> None:
         return await event.context.respond(
             embed=hikari.Embed(
                 title="Command on Cooldown",
-                color=0xFF0000,
-                description=f"This command is on cooldown, try again after `{math.ceil(error.retry_after)}s`.",
+                color=Colors.ALERT,
+                description=f"{Emojis.WARNING} This command is on cooldown, try again after `{math.ceil(error.retry_after)}s`.",
             ),
             flags=hikari.MessageFlag.EPHEMERAL,
         )
@@ -61,7 +63,9 @@ async def on_error(event: lightbulb.CommandErrorEvent) -> None:
 
     title = " ".join(re.compile(r"[A-Z][a-z]*").findall(error.__class__.__name__))
     await event.context.respond(
-        embed=hikari.Embed(title=title, description=str(error), color=0xFF0000),
+        embed=hikari.Embed(
+            title=f"{Emojis.ERROR} {title}", description=str(error), color=Colors.ERROR
+        ),
         flags=hikari.MessageFlag.EPHEMERAL,
     )
     raise error
