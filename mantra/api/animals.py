@@ -1,10 +1,10 @@
 import aiohttp
+from pydantic import BaseModel
 
 
-class Animals(object):
-    def __init__(self, image: str, fact: str):
-        self.image = image
-        self.fact = fact
+class Animals(BaseModel):
+    image: str
+    fact: str
 
 
 async def make_request(type: str) -> "Animals":
@@ -12,4 +12,4 @@ async def make_request(type: str) -> "Animals":
         async with session.get(f"https://some-random-api.ml/animal/{type}") as response:
             data = await response.json()
 
-    return Animals(**data)
+    return Animals.construct(**data)
