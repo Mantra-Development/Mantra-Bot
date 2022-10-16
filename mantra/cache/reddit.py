@@ -24,14 +24,13 @@ class RedditData(BaseModel):
     permalink: str
     upvotes: int
     comments: int
-    timestamp: int
     author_name: str
 
 
 class RedditCache:
     def __init__(self, bot: "Mantra") -> None:
         self.bot = bot
-        self.subreddits = ["memes"]
+        self.subreddits = ["memes", "cursedcomments"]
         self.reddit = asyncpraw.Reddit(
             client_id=reddit_config.client_id,
             client_secret=reddit_config.client_secret,
