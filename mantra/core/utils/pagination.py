@@ -50,7 +50,7 @@ class CustomPaginator(nav.NavigatorView):
         if ctx.user.id != self.lctx.author.id:
             await ctx.respond(
                 embed=hikari.Embed(
-                    description=f"{Emojis.WARNING} You cannot interact with this as it belongs to <@{ctx.user.id}>",
+                    description=f"{Emojis.WARNING} You cannot interact with this as it belongs to <@{self.lctx.author.id}>",
                     color=Colors.ERROR,
                 ),
                 flags=hikari.MessageFlag.EPHEMERAL,

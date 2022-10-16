@@ -14,7 +14,9 @@ hikari-lightbulb = "^2.2.4"
 tortoise-orm = {extras = ["asyncpg"], version = "^0.19.2"}
 aerich = "^0.7.1"
 hikari-yuyo = "^1.1.1a1"
-hikari-miru = "^1.1.2"
+hikari-miru = {git = "https://github.com/HyperGH/hikari-miru", rev = "05ac0b4"}
+aioredis = "^2.0.1"
+asyncpraw = "^7.5.0"
 
 
 [tool.poetry.group.dev.dependencies]
