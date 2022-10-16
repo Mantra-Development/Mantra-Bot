@@ -13,9 +13,15 @@ services:
     env_file: .env
     depends_on:
       - postgres
+      - redis
     links:
       - postgres:postgres
+      - redis:redis
     volumes:
       - ./:/code
+
+  redis:
+    image: redis:alpine
+    restart: always
 volumes:
   postgres_db:

@@ -2,10 +2,12 @@ import asyncio
 import logging
 
 import aiohttp
+import aioredis
 import hikari
 import lightbulb
 from tortoise import Tortoise
 
+from mantra.cache.reddit import RedditCache
 from mantra.config import bot_config
 
 from .models import Guild
@@ -26,6 +28,8 @@ class Mantra(lightbulb.BotApp):
             prefix=lightbulb.when_mentioned_or(self.determine_prefix),
             banner="mantra.assets",
         )
+        self.redis = aioredis.from_url(url="redis://redis")
+        self.reddit_cache = RedditCache(self)
 
     async def determine_prefix(self, _, message: hikari.Message) -> str:
         if not message.guild_id:
@@ -44,6 +48,7 @@ class Mantra(lightbulb.BotApp):
 
     async def on_starting(self, event: hikari.StartingEvent) -> None:
         asyncio.create_task(self.establish_db_connection())
+        asyncio.create_task(self.reddit_cache.fetch_posts())
         self.load_extensions_from("./mantra/core/plugins", recursive=True)
         self.aiohttp_session = aiohttp.ClientSession()
         logger.info("Bot is starting!")
