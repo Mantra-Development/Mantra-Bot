@@ -1,3 +1,5 @@
+import logging
+
 import hikari
 import lightbulb
 from tortoise.transactions import atomic
@@ -44,20 +46,37 @@ async def create_ticket(
             ticket_config.channel = channel.id
             await ticket_config.save()
 
-    await channel.send(
-        embed=hikari.Embed(
-            title="Ticket",
-            description=message or "Click the button below to create the Ticket!",
-            color=Colors.GENERIC,
-        ),
-        components=[create_ticket_button(ctx)],
-    )
+    last_message = await channel.fetch_history().limit(1)
+    if not last_message:
+        await channel.send(
+            embed=hikari.Embed(
+                title="Ticket",
+                description=message or "Click the button below to create the Ticket!",
+                color=Colors.GENERIC,
+            ),
+            components=[create_ticket_button(ctx)],
+        )
 
     await ctx.respond(
         embed=hikari.Embed(
             description=f"{ Emojis.SUCCESS} Tickets channel has been created successfully!",
             color=Colors.SUCCESS,
         ),
+        flags=hikari.MessageFlag.EPHEMERAL,
+    )
+
+
+@tickets.listener(hikari.InteractionCreateEvent)
+async def handle_create_ticket(event: hikari.InteractionCreateEvent) -> None:
+    if (
+        not isinstance(event.interaction, hikari.ComponentInteraction)
+        or event.interaction.custom_id != "new_ticket"
+    ):
+        return
+
+    await event.interaction.create_initial_response(
+        hikari.ResponseType.MESSAGE_CREATE,
+        "Button clicked!",
         flags=hikari.MessageFlag.EPHEMERAL,
     )
 
