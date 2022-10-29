@@ -7,3 +7,4 @@ class Colors(int, Enum):
     GENERIC = 0xFFD700
     ALERT = 0xFFA500
     INFO = 0x99CCFF
+    GOLDEN = 0xFFD700
