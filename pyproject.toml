@@ -22,6 +22,7 @@ asyncpraw = "^7.5.0"
 [tool.poetry.group.dev.dependencies]
 black = {version = "^22.8.0", allow-prereleases = true}
 pre-commit = "^2.20.0"
+isort = "^5.10.1"
 
 
 [tool.aerich]
