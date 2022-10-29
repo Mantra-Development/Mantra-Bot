@@ -10,3 +10,4 @@ class Emojis(str, Enum):
     PREV = "<:prev:1030527370970538095>"
     NEXT = "<:next:1030527368512680017>"
     LAST = "<:last:1030527366184829039>"
+    COPY = "©"
