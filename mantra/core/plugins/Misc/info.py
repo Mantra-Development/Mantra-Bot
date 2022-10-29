@@ -56,11 +56,12 @@ async def serverinfo_command(ctx: lightbulb.Context) -> None:
         flags=hikari.MessageFlag.EPHEMERAL,
     )
 
+
 @info.command
 @lightbulb.command("Userinfo", "Get info of a user", pass_options=True)
 @lightbulb.implements(lightbulb.UserCommand)
 async def userinfo_command(ctx: lightbulb.Context, target: hikari.Member) -> None:
-    
+
     assert ctx.guild_id is not None
     created_at = int(target.created_at.timestamp())
     joined_at = int(target.joined_at.timestamp())
@@ -84,7 +85,9 @@ async def userinfo_command(ctx: lightbulb.Context, target: hikari.Member) -> Non
     else:
         acknowlegdement = "Member"
 
-    status = member_presence.visible_status if member_presence is not None else "Offline"
+    status = (
+        member_presence.visible_status if member_presence is not None else "Offline"
+    )
     description = ""
     fields = [
         ("ID", target.id),
@@ -96,12 +99,16 @@ async def userinfo_command(ctx: lightbulb.Context, target: hikari.Member) -> Non
     ]
     for name, value in fields:
         description += f"**{name}** : {value}\n"
-    embed = hikari.Embed(
-        title=f"Userinfo of {str(target) + ' 👑' if ctx.get_guild().owner_id == target.id else target}",
-        description=description,
-        color=Colors.INFO,
-        timestamp=datetime.now().astimezone()
-    ).set_thumbnail(target.display_avatar_url).set_author(name=f"{ctx.author}", icon=ctx.author.avatar_url)
+    embed = (
+        hikari.Embed(
+            title=f"Userinfo of {str(target) + ' 👑' if ctx.get_guild().owner_id == target.id else target}",
+            description=description,
+            color=Colors.INFO,
+            timestamp=datetime.now().astimezone(),
+        )
+        .set_thumbnail(target.display_avatar_url)
+        .set_author(name=f"{ctx.author}", icon=ctx.author.avatar_url)
+    )
     if permissions:
         embed.add_field(
             name="Permissions",
@@ -112,8 +119,12 @@ async def userinfo_command(ctx: lightbulb.Context, target: hikari.Member) -> Non
         embed.add_field(name="Roles", value=",".join(r.mention for r in roles))
 
     await ctx.respond(
-        embed=embed.set_footer(f"{Emojis.COPY} Mantra Development", icon=ctx.bot.get_me().avatar_url), flags=hikari.MessageFlag.EPHEMERAL
+        embed=embed.set_footer(
+            f"{Emojis.COPY} Mantra Development", icon=ctx.bot.get_me().avatar_url
+        ),
+        flags=hikari.MessageFlag.EPHEMERAL,
     )
+
 
 def load(bot: lightbulb.BotApp) -> None:
     bot.add_plugin(info)
