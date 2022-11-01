@@ -1,5 +1,8 @@
 # Mantra Bot
 
+[![Black](https://github.com/Mantra-Development/Mantra-Bot/actions/workflows/black.yml/badge.svg)](https://github.com/Mantra-Development/Mantra-Bot/actions/workflows/black.yml)
+[![Isort](https://github.com/Mantra-Development/Mantra-Bot/actions/workflows/isort.yml/badge.svg)](https://github.com/Mantra-Development/Mantra-Bot/actions/workflows/isort.yml)
+
 This is the planlist of all the tasks to be completed in the v1 of the Mantra bot!
 
 ## Libraries that can be used

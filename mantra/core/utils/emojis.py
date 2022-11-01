@@ -11,3 +11,4 @@ class Emojis(str, Enum):
     NEXT = "<:next:1030527368512680017>"
     LAST = "<:last:1030527366184829039>"
     COPY = "©"
+    STAR = "\u2B50"
