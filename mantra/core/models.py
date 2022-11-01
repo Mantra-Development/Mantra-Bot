@@ -26,3 +26,19 @@ class Guild(LogModel):
 
         table = "guilds"
         table_description = "Stores information about the guild."
+
+
+class TicketConfig(LogModel):
+    id = fields.IntField(pk=True, description="ID of the ticket config")
+    guild = fields.ForeignKeyField("main.Guild", related_name="ticket")
+    channel = fields.BigIntField(description="ID of the Ticket Channel")
+    message = fields.CharField(
+        max_length=255, description="Custom message to be sent", blank=True, null=True
+    )
+
+    class Meta:
+        table = "ticket_config"
+        table_description = (
+            "This table stores all the information related to Ticket configuration"
+        )
+        unique = "guild"
