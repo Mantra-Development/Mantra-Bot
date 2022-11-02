@@ -63,18 +63,16 @@ docker-compose up
 
 ### Fun Commands
 
-| Command    | Description                  | Command Type  | Checklist |
-| ---------- | ---------------------------- | ------------- | --------- |
-| 8ball      | Magic 8Ball                  | Slash Command |           |
-| urban      | Get words meaning from Urban | Slash Command | ✅        |
-| google     | Google a word                | Slash Command |           |
-| duckduckgo | Ddg a word                   | Slash Command |           |
-| reverse    | Reverse a given Text         | Slash Command |           |
-| coin       | Flip a coin                  | Slash Command |           |
-| dog        | Dog image and fact           | Slash Command | ✅        |
-| cat        | Cat image and fact           | Slash Command | ✅        |
-| bird       | Bird image and fact          | Slash Command | ✅        |
-| memes      | Get memes                    | Slash Command | ✅        |
+| Command | Description                  | Command Type  | Checklist |
+| ------- | ---------------------------- | ------------- | --------- |
+| 8ball   | Magic 8Ball                  | Slash Command | ✅        |
+| urban   | Get words meaning from Urban | Slash Command | ✅        |
+| reverse | Reverse a given Text         | Slash Command | ✅        |
+| coin    | Flip a coin                  | Slash Command | ✅        |
+| dog     | Dog image and fact           | Slash Command | ✅        |
+| cat     | Cat image and fact           | Slash Command | ✅        |
+| bird    | Bird image and fact          | Slash Command | ✅        |
+| memes   | Get memes                    | Slash Command | ✅        |
 
 ### Utilities Commands
 
