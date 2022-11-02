@@ -1,4 +1,4 @@
 /.github/workflows @thenishantsapkota
-\*.py @thenishantsapkota
+*.py      @thenishantsapkota
 
-\*.md @thenishantsapkota
+*.md      @thenishantsapkota
