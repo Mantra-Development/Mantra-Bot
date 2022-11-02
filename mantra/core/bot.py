@@ -5,6 +5,7 @@ import aiohttp
 import aioredis
 import hikari
 import lightbulb
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from tortoise import Tortoise
 
 from mantra.cache.reddit import RedditCache
@@ -30,6 +31,7 @@ class Mantra(lightbulb.BotApp):
         )
         self.redis = aioredis.from_url(url="redis://redis")
         self.reddit_cache = RedditCache(self)
+        self.scheduler = AsyncIOScheduler()
 
     async def determine_prefix(self, _, message: hikari.Message) -> str:
         if not message.guild_id:
@@ -49,6 +51,7 @@ class Mantra(lightbulb.BotApp):
     async def on_starting(self, event: hikari.StartingEvent) -> None:
         asyncio.create_task(self.establish_db_connection())
         asyncio.create_task(self.reddit_cache.fetch_posts())
+        self.scheduler.start()
         self.load_extensions_from("./mantra/core/plugins", recursive=True)
         self.aiohttp_session = aiohttp.ClientSession()
         logger.info("Bot is starting!")
