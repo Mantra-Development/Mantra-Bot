@@ -82,7 +82,7 @@ docker-compose up
 | say             | Say command to make the bot talk | Slash Command   |           |
 | translate       | Self Explanatory                 | Message Command |           |
 | Leveling System | Self Explanatory                 | Slash Command   |           |
-| remainder       | Remind you of things             | Slash Command   |           |
+| remainder       | Remind you of things             | Slash Command   | ✅        |
 | starboard       | Star messages (Togglable)        | Slash Command   | ✅        |
 
 ### Moderation Commands
