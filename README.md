@@ -45,8 +45,8 @@ docker-compose up
 
 | Command      | Description                        | Command Type  | Checklist |
 | ------------ | ---------------------------------- | ------------- | --------- |
-| eval         | Run Python code in bot environment | Modals        |           |
-| (re/un) load | Reload/Unload/Load Plugins         | Slash Command |           |
+| eval         | Run Python code in bot environment | Modals        | ✅        |
+| (re/un) load | Reload/Unload/Load Plugins         | Slash Command | ✅        |
 
 ### General System Commands
 
@@ -54,8 +54,8 @@ docker-compose up
 | ---------------------- | ----------------------- | ------------- | --------- |
 | info                   | Some info about the bot | Slash Command |           |
 | ping                   | Ping of the Bot         | Slash Command |           |
-| userinfo               | Info of a user          | User Command  |           |
-| serverinfo             | Info of a server        | Slash Command |           |
+| userinfo               | Info of a user          | User Command  | ✅        |
+| serverinfo             | Info of a server        | Slash Command | ✅        |
 | emoji                  | Emoji Commands          | Slash Command |           |
 | steal                  | Steal Emoji             | Slash Command |           |
 | Android Clyde Commands | Self Explanatory        | Slash Command |           |
@@ -66,15 +66,15 @@ docker-compose up
 | Command    | Description                  | Command Type  | Checklist |
 | ---------- | ---------------------------- | ------------- | --------- |
 | 8ball      | Magic 8Ball                  | Slash Command |           |
-| urban      | Get words meaning from Urban | Slash Command |           |
+| urban      | Get words meaning from Urban | Slash Command | ✅        |
 | google     | Google a word                | Slash Command |           |
 | duckduckgo | Ddg a word                   | Slash Command |           |
 | reverse    | Reverse a given Text         | Slash Command |           |
 | coin       | Flip a coin                  | Slash Command |           |
-| dog        | Dog image and fact           | Slash Command |           |
-| cat        | Cat image and fact           | Slash Command |           |
-| bird       | Bird image and fact          | Slash Command |           |
-| memes      | Get memes                    | Slash Command |           |
+| dog        | Dog image and fact           | Slash Command | ✅        |
+| cat        | Cat image and fact           | Slash Command | ✅        |
+| bird       | Bird image and fact          | Slash Command | ✅        |
+| memes      | Get memes                    | Slash Command | ✅        |
 
 ### Utilities Commands
 
@@ -85,7 +85,7 @@ docker-compose up
 | translate       | Self Explanatory                 | Message Command |           |
 | Leveling System | Self Explanatory                 | Slash Command   |           |
 | remainder       | Remind you of things             | Slash Command   |           |
-| starboard       | Star messages (Togglable)        | Slash Command   |           |
+| starboard       | Star messages (Togglable)        | Slash Command   | ✅        |
 
 ### Moderation Commands
 
