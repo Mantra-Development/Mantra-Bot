@@ -3,6 +3,7 @@ from .colors import Colors
 from .emojis import Emojis
 from .errors import CommandError
 from .pagination import CustomPaginator, _chunk
+from .time import time_converter
 
 __all__ = [
     "CommandError",
@@ -11,4 +12,5 @@ __all__ = [
     "create_source_button",
     "CustomPaginator",
     "_chunk",
+    "time_converter",
 ]

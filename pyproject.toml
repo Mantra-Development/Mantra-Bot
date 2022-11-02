@@ -17,6 +17,7 @@ hikari-yuyo = "^1.1.1a1"
 hikari-miru = {git = "https://github.com/HyperGH/hikari-miru", rev = "05ac0b4"}
 aioredis = "^2.0.1"
 asyncpraw = "^7.5.0"
+apscheduler = "^3.9.1"
 
 
 [tool.poetry.group.dev.dependencies]
