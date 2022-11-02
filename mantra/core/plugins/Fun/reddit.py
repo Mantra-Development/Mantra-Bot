@@ -1,7 +1,12 @@
+from typing import TYPE_CHECKING, cast
+
 import hikari
 import lightbulb
 
 from mantra.core.utils import Colors, CustomPaginator, _chunk
+
+if TYPE_CHECKING:
+    from mantra.core.bot import Mantra
 
 reddit = lightbulb.Plugin("Reddit", "Plugin for reddit commands")
 
@@ -17,7 +22,8 @@ async def reddit_command(_: lightbulb.Context) -> None:
 @lightbulb.command("memes", "Get posts from the memes subreddit.")
 @lightbulb.implements(lightbulb.SlashSubCommand)
 async def memes_command(ctx: lightbulb.Context) -> None:
-    memes = await ctx.bot.reddit_cache.get_data("memes")
+    bot = cast("Mantra", ctx.app)
+    memes = await bot.reddit_cache.get_data("memes")
     fields = [
         hikari.Embed(
             title=meme[0].title,

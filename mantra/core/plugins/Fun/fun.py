@@ -1,6 +1,7 @@
 import asyncio
 import random
 from datetime import datetime
+from typing import TYPE_CHECKING, cast
 
 import aiohttp
 import hikari
@@ -8,6 +9,9 @@ import lightbulb
 
 from mantra.api.urban import make_urban_request
 from mantra.core.utils import Colors, CustomPaginator, _chunk
+
+if TYPE_CHECKING:
+    from mantra.core.bot import Mantra
 
 fun = lightbulb.Plugin("Fun", "Fun Commands Plugin")
 
@@ -88,9 +92,9 @@ async def flip_coin_command(ctx: lightbulb.Context) -> None:
 @lightbulb.command("8ball", "Ask the magic 8Ball some questions", pass_options=True)
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ball_command(ctx: lightbulb.Context, question: str) -> None:
-    async with aiohttp.ClientSession() as session:
-        async with session.get(f"https://www.eightballapi.com/api") as response:
-            data = await response.json()
+    bot = cast("Mantra", ctx.app)
+    async with bot.aiohttp_session.get(f"https://www.eightballapi.com/api") as response:
+        data = await response.json()
 
     await ctx.respond(
         embed=hikari.Embed(
