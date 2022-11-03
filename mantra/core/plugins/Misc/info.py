@@ -1,3 +1,5 @@
+import logging
+import math
 from datetime import datetime
 
 import hikari
@@ -123,6 +125,45 @@ async def userinfo_command(ctx: lightbulb.Context, target: hikari.Member) -> Non
         embed=embed.set_footer(
             f"{Emojis.COPY} Mantra Development", icon=ctx.bot.get_me().avatar_url
         ),
+        flags=hikari.MessageFlag.EPHEMERAL,
+    )
+
+
+@info.command
+@lightbulb.command("ping", "View the latency of the bot")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def ping_command(ctx: lightbulb.Context) -> None:
+    await ctx.respond(
+        embed=hikari.Embed(
+            description=f"**Ping:** {math.floor(ctx.bot.heartbeat_latency * 1000)}ms",
+            color=Colors.INFO,
+        )
+    )
+
+
+@info.command
+@lightbulb.command("Avatar", "View an avatar of the user", pass_options=True)
+@lightbulb.implements(lightbulb.UserCommand)
+async def avatar_command(ctx: lightbulb.Context, target: hikari.Member) -> None:
+    extensions = ["jpeg", "png", "webp", "gif"]
+    data = dict()
+    try:
+        for extension in extensions:
+            url = target.make_avatar_url(ext=extension)
+            data[extension] = url
+    except TypeError:
+        pass
+    description = ""
+    for image in list(data.keys()):
+        description += f"[{image.upper()}]({data[image].url}) | "
+
+    await ctx.respond(
+        embed=hikari.Embed(
+            title=f"Avatar - {target}",
+            description=description,
+            color=Colors.INFO,
+            timestamp=datetime.now().astimezone(),
+        ).set_image(target.avatar_url),
         flags=hikari.MessageFlag.EPHEMERAL,
     )
 
