@@ -53,7 +53,8 @@ docker-compose up
 | Command                | Description             | Command Type  | Checklist |
 | ---------------------- | ----------------------- | ------------- | --------- |
 | info                   | Some info about the bot | Slash Command |           |
-| ping                   | Ping of the Bot         | Slash Command |           |
+| Avatar                 | View Avatar of a user   | User Command  | ✅        |
+| ping                   | Ping of the Bot         | Slash Command | ✅        |
 | userinfo               | Info of a user          | User Command  | ✅        |
 | serverinfo             | Info of a server        | Slash Command | ✅        |
 | emoji                  | Emoji Commands          | Slash Command |           |
